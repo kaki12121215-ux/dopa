@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>Dopa</title>
+<meta name="description" content="Empieza por lo más pequeño.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Dopa">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#FFF5E8" id="theme-color">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="icon" href="icons/favicon-32.png">
+<link rel="preload" href="fonts/Adventor-regular.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="fonts/Adventor-bold.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="app.css">
+<script>
+  // tema antes de pintar, para que no parpadee
+  (function () {
+    try {
+      var t = (JSON.parse(localStorage.getItem('dopa') || '{}').aj || {}).tema || 'auto';
+      var dark = t === 'oscuro' || (t === 'auto' && matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+<div id="app">
+  <div id="screens"></div>
+
+  <nav class="tabbar" id="tabbar" hidden>
+    <button data-a="tab" data-x="hoy"><span class="ti" data-ti="hoy"></span><span>Hoy</span></button>
+    <button data-a="tab" data-x="arrancar"><span class="ti" data-ti="arrancar"></span><span>Arrancar</span></button>
+    <button data-a="tab" data-x="pausa"><span class="ti" data-ti="pausa"></span><span>Pausa</span></button>
+    <button data-a="tab" data-x="patrones"><span class="ti" data-ti="patrones"></span><span>Patrones</span></button>
+  </nav>
+
+  <div class="scrim" id="scrim" data-a="cerrar-hoja"></div>
+  <div class="sheet" id="sheet"><div class="grab-zone"><div class="grab"></div></div><div class="sheet-body" id="sheet-body"></div></div>
+
+  <div class="pop-scrim" id="pop-scrim" data-a="pop-cerrar"></div>
+  <div class="pop" id="pop"></div>
+
+  <div class="toast" id="toast"><span id="toast-t"></span><button id="toast-b" data-a="deshacer" hidden>Deshacer</button></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
