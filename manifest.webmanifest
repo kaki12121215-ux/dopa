@@ -1,12 +1,12 @@
 {
   "name": "Dopa",
   "short_name": "Dopa",
-  "description": "Empieza por lo más pequeño.",
+  "description": "Una app para el TDAH que se adapta a tu energía.",
   "lang": "es-ES",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "orientation": "portrait",
+  "orientation": "any",
   "background_color": "#FFF5E8",
   "theme_color": "#FFF5E8",
   "icons": [

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <title>Dopa</title>
-<meta name="description" content="Empieza por lo más pequeño.">
+<meta name="description" content="Una app para el TDAH que se adapta a tu energía.">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Dopa">
@@ -17,12 +17,15 @@
 <link rel="preload" href="fonts/Adventor-bold.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="app.css">
 <script>
-  // tema antes de pintar, para que no parpadee
+  // tema y color de la barra de arriba antes de pintar, para que no parpadee
   (function () {
     try {
       var t = (JSON.parse(localStorage.getItem('dopa') || '{}').aj || {}).tema || 'auto';
       var dark = t === 'oscuro' || (t === 'auto' && matchMedia('(prefers-color-scheme: dark)').matches);
       document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      var c = dark ? '#142026' : '#FFF5E8';
+      document.getElementById('theme-color').setAttribute('content', c);
+      document.documentElement.style.backgroundColor = c;
     } catch (e) {}
   })();
 </script>
@@ -32,10 +35,10 @@
   <div id="screens"></div>
 
   <nav class="tabbar" id="tabbar" hidden>
-    <button data-a="tab" data-x="hoy"><span class="ti" data-ti="hoy"></span><span>Hoy</span></button>
-    <button data-a="tab" data-x="arrancar"><span class="ti" data-ti="arrancar"></span><span>Arrancar</span></button>
-    <button data-a="tab" data-x="pausa"><span class="ti" data-ti="pausa"></span><span>Pausa</span></button>
-    <button data-a="tab" data-x="patrones"><span class="ti" data-ti="patrones"></span><span>Patrones</span></button>
+    <button data-a="tab" data-x="hoy"><span class="ti"></span><span>Hoy</span></button>
+    <button data-a="tab" data-x="arrancar"><span class="ti"></span><span>Arrancar</span></button>
+    <button data-a="tab" data-x="pausa"><span class="ti"></span><span>Pausa</span></button>
+    <button data-a="tab" data-x="patrones"><span class="ti"></span><span>Patrones</span></button>
   </nav>
 
   <div class="scrim" id="scrim" data-a="cerrar-hoja"></div>
